@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Последовательно введите ваши данные, чтобы подтвердить Enter");
+            Console.WriteLine("Последовательно введите ваши данные");
             Console.Write("\nИмя:");
             string? i = Console.ReadLine();
 
@@ -14,9 +14,9 @@
             Console.Write("Отчество:");
             string? o = Console.ReadLine();
 
-            Console.WriteLine($"\n{i} {f} {o}");
+            Console.WriteLine($"\nПривет, {i} {f} {o}!");
 
-            Console.WriteLine("\nПоследовательно введите данные для вычисления");
+            Console.WriteLine("\nВведите данные для вычисления");
 
             Console.Write("\nПервое число: ");
             double p1 = Convert.ToDouble(Console.ReadLine());
@@ -60,7 +60,7 @@
             }
 
             Console.WriteLine($"Результат: {restext}");
-            Console.WriteLine($"\nНажмите любую клавишу чтобы выйти");
+            Console.WriteLine($"\nНажмите Enter, чтобы выйти");
             Console.ReadLine();
         }
     }

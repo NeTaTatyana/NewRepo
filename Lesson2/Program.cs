@@ -18,7 +18,7 @@
             double sum = 0;
             double p = 0;
             int f = 0;
-            while (i < 4)
+            while (i < n)
             {
                 try
                 {

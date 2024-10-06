@@ -39,7 +39,7 @@ namespace Lesson3M
                 else
                 {
 
-                   MistInput(p, i); //Вызов метод проверки ввода и обработки ошибок
+                   MistInput(p, ref i); //Вызов метод проверки ввода и обработки ошибок
 
                     if (flag == true) { Environment.Exit(0); }
                     if (mistf == true) // исключение из массива ошибки ввода
@@ -63,7 +63,7 @@ namespace Lesson3M
             }
         }
 
-        static void MistInput(string p, int i) // Метод проверки ввода и обработки ошибок
+        static void MistInput(string p, ref int i) // Метод проверки ввода и обработки ошибок
         {
 
             try // обработка ошибки (ввод символа)

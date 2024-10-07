@@ -3,6 +3,11 @@ using System;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 
+// 1 (Покормить) - добавляется 3 зерна и появляется 1 яйцо
+// 2 (Забрать яйца) - яйца забираются сразу все
+// При любом сделанном ходе (1,2,3) курица съдает 1 зерно
+
+
 namespace Lesson5_Play
 {
 

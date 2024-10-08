@@ -14,12 +14,12 @@ namespace Lesson5_Play
     internal class Program
     {
 
-        static bool k = true; //  курицы жива да/нет
-        static int z = 0; // количество зерен, 1 для 1-го хода;
-        static int y = 0; // количество собранных яиц, -1 для 1-го хода;E LfiE LfibE 
-        static int hod = 0;
-        static string sk = "жива";
-        static int ycount = 0;
+        static bool kurica = true; //  курицы жива да/нет
+        static int zerno = 0; // количество зерен, 1 для 1-го хода;
+        static int egg = 0; // количество собранных яиц, -1 для 1-го хода;E LfiE LfibE 
+        static int step = 0;
+        static string skurica = "жива";
+        static int eggcount = 0;
         static bool end = false;
         static void Main(string[] args)
         {
@@ -30,15 +30,15 @@ namespace Lesson5_Play
 
             while (true)
             {
-               
-                sk = Live(k);
-                Console.WriteLine($"Курица {sk}!   зерен: {z}   яиц у курицы: {y}   яиц собрано: {ycount} \n");
+
+                skurica = Live(kurica);
+                Console.WriteLine($"Курица {skurica}!   зерен: {zerno}   яиц у курицы: {egg}   яиц собрано: {eggcount} \n");
 
                 while (true)
                 {
-                    if (Int32.TryParse(Console.ReadLine(), out hod))
+                    if (Int32.TryParse(Console.ReadLine(), out step))
                     {
-                        if (hod > 0 && hod < 5)
+                        if (step > 0 && step < 5)
                         {
                             break;
                         }
@@ -46,14 +46,14 @@ namespace Lesson5_Play
                     Console.WriteLine($"Ошибка, нажмите 1 или 2, 3 или 4");
                 }
 
-                //               DoHod(hod,out k,out z,out y);
-                
-                DoHod(hod, ref k, ref z, ref y);
+                //               Dostep(step,out kurica,out zerno,out y);
+
+                DoStep(step, ref kurica, ref zerno, ref egg);
                 if (end == true)
                 {    Console.WriteLine($"Выход");
                      break; 
                 }
-                if (k == false)
+                if (kurica == false)
                 {
                     Console.WriteLine($"Курицы больше нет\n\n");
                     break;
@@ -62,22 +62,23 @@ namespace Lesson5_Play
 
         }
 
-        static void DoHod(int hodm, ref bool km, ref int zm, ref int ym)
+        static void DoStep(int stepm, ref bool kuricam, ref int zernom, ref int eggm)
         {
-            switch (hodm)
+            switch (stepm)
             {
                 case 1:
-                    { zm += 3;
-                      ym++; // если яйцо высиживается только в тот ход, когда кормят
+                    {
+                        zernom += 3;
+                      eggm++; // если яйцо высиживается только в тот ход, когда кормят
                       break; 
                     }
                 case 2:
-                    if (ym>0)
+                    if (eggm>0)
                     {
 //                      ym--;         // если собирать по одному
 //                      ycount++;     // если собирать по одному
-                      ycount += ym;   // если собирать все сразу
-                      ym = 0;         // если собирать все одному
+                      eggcount += eggm;   // если собирать все сразу
+                      eggm = 0;         // если собирать все одному
                         break; }
                     else
                     {
@@ -90,9 +91,10 @@ namespace Lesson5_Play
                     end = true;
                     { break; }
             }
-          zm--;
-          if (zm <= 0)    
-          { km = false; return; }
+          zernom--;
+
+          if (zernom <= 0)    
+          { kuricam = false; return; }
 //          ym++; //если яйцо высиживается каждый ход, пока есть зерна
 
 

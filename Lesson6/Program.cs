@@ -1,4 +1,6 @@
-﻿namespace Lesson6
+﻿using System;
+
+namespace Lesson6
 {
 
 
@@ -26,9 +28,26 @@
 
             static int[,] chickens = { {1, 1, 3, 0 }, {2, 1, 3, 0 }, { 3, 1, 3, 0} };
 
+            enum OrdinalNumbers
+            {
+                Первая=1,
+                Вторая=2,
+                Третья=3
+            }
+
+            static int OrdinalNumber = 0;
+
+            enum LifeStatuses
+            {
+                мертва = 0,
+                жива = 1
+            }
+
+            static int LifeStatus = 0;
+
 
             static void Main(string[] args)
-            {
+           {
 
                 Console.WriteLine($"Кормите куриц и собирайте яйца \n ");
                 Console.WriteLine($"1 - Покормить\n2 - Забрать яйца\n3 - Ничего не делать\n4 - Выйти \n");
@@ -38,15 +57,25 @@
                 {
 
                     for (int l = 0; l < 3; l++)
+
+
+
                     {
 
-                        Console.WriteLine($"Курицы:  {chickens[l, 0]} - {chickens[l, 1]}   зерен: {chickens[l, 2]}   яиц у курицы: {chickens[l, 3]}");
+                        OrdinalNumber = chickens[l, 0];
+                        string ChickenOrdinalNumber = GetMyOrdinalNumbers(OrdinalNumber);
+
+                        LifeStatus = chickens[l, 1];
+                        string ChickenLifeStatus = GetLifeStatuses(LifeStatus);
+
+                        Console.WriteLine($"{ChickenOrdinalNumber} курица {ChickenLifeStatus}   зерен: {chickens[l, 2]}   яиц: {chickens[l, 3]}");
                     }
 
-                    Console.WriteLine($"Всего яиц собрано: {eggcount}");
+                    Console.WriteLine($"Всего яиц собрано: {eggcount}\n");
 
                     while (true)
                     {
+                        Console.WriteLine($"Ваше действие:");
                         if (Int32.TryParse(Console.ReadLine(), out hotkey))
                         {
                             if (hotkey > 0 && hotkey < 5)
@@ -118,9 +147,6 @@
                         { break; }
                 }
 
- //               chickens[0, 2]--;
- //               chickens[1, 2]--;
- //               chickens[2, 2]--;
 
                 for (int l = 0; l < 3; l++)
                 {
@@ -140,6 +166,18 @@
                     System.Environment.Exit(1);
                 }
 
+            }
+
+            static string GetMyOrdinalNumbers(int OrdinalNumbers)
+            {
+                OrdinalNumbers MyOrdinalNumber = (OrdinalNumbers)OrdinalNumber;
+                return MyOrdinalNumber.ToString();
+            }
+
+            static string GetLifeStatuses(int LifeStatus)
+            {
+                LifeStatuses MyLifeStatus = (LifeStatuses)LifeStatus;
+                return MyLifeStatus.ToString();
             }
 
         }

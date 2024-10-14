@@ -14,11 +14,11 @@ namespace Lesson5_Play
     internal class Program
     {
 
-        static bool kurica = true; //  курицы жива да/нет
+        static bool chickenstatus = true; //  курицы жива да/нет
         static int zerno = 0; // количество зерен, 1 для 1-го хода;
         static int egg = 0; // количество собранных яиц, -1 для 1-го хода;E LfiE LfibE 
-        static int step = 0;
-        static string skurica = "жива";
+        static int hotkey = 0;
+        static string stringstatus = "жива";
         static int eggcount = 0;
         static bool end = false;
         static void Main(string[] args)
@@ -31,14 +31,14 @@ namespace Lesson5_Play
             while (true)
             {
 
-                skurica = Live(kurica);
-                Console.WriteLine($"Курица {skurica}!   зерен: {zerno}   яиц у курицы: {egg}   яиц собрано: {eggcount} \n");
+                stringstatus = Live(chickenstatus);
+                Console.WriteLine($"Курица {stringstatus}!   зерен: {zerno}   яиц у курицы: {egg}   яиц собрано: {eggcount} \n");
 
                 while (true)
                 {
-                    if (Int32.TryParse(Console.ReadLine(), out step))
+                    if (Int32.TryParse(Console.ReadLine(), out hotkey))
                     {
-                        if (step > 0 && step < 5)
+                        if (hotkey > 0 && hotkey < 5)
                         {
                             break;
                         }
@@ -46,25 +46,17 @@ namespace Lesson5_Play
                     Console.WriteLine($"Ошибка, нажмите 1 или 2, 3 или 4");
                 }
 
-                //               Dostep(step,out kurica,out zerno,out y);
+                //               DoHotkey(hotkey,out chickenstatus,out zerno,out y);
 
-                DoStep(step, ref kurica, ref zerno, ref egg);
-                if (end == true)
-                {    Console.WriteLine($"Выход");
-                     break; 
-                }
-                if (kurica == false)
-                {
-                    Console.WriteLine($"Курицы больше нет\n\n");
-                    break;
-                }
+                DoHotKey(hotkey, ref chickenstatus, ref zerno, ref egg);
+
             }
 
         }
 
-        static void DoStep(int stepm, ref bool kuricam, ref int zernom, ref int eggm)
+        static void DoHotKey(int hotkeym, ref bool chickenstatusm, ref int zernom, ref int eggm)
         {
-            switch (stepm)
+            switch (hotkeym)
             {
                 case 1:
                     {
@@ -88,13 +80,17 @@ namespace Lesson5_Play
                 case 3:
                     { break; }
                 case 4:
-                    end = true;
+                    Console.WriteLine($"Выход");
+                    System.Environment.Exit(1);
+                    //end = true;
                     { break; }
             }
           zernom--;
 
-          if (zernom <= 0)    
-          { kuricam = false; return; }
+            if (zernom <= 0) {
+                Console.WriteLine($"Курицы больше нет\n\n"); 
+                System.Environment.Exit(1); }   
+//          { chickenstatusm = false; return; }
 //          ym++; //если яйцо высиживается каждый ход, пока есть зерна
 
 

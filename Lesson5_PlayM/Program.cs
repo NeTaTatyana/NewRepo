@@ -9,11 +9,11 @@
         internal class Program
         {
 
-            static bool kurica = true; //  курицы жива да/нет
-            static int zerno = 0; // количество зерен, 1 для 1-го хода;
+            static bool chickenstatus = true; //  курицы жива да/нет
+            static int corn = 0; // количество зерен, 1 для 1-го хода;
             static int egg = 0; // количество собранных яиц, -1 для 1-го хода;E LfiE LfibE 
             static int step  = 0;
-            static string skurica = "жива";
+            static string stringchickenstatus = "жива";
             static int eggcount = 0;
             static bool end = false;
             static void Main(string[] args)
@@ -26,8 +26,8 @@
                 while (true)
                 {
 
-                skurica = Live(kurica);
-                    Console.WriteLine($"Курица {skurica}!   зерен: {zerno}   яиц у курицы: {egg}   яиц собрано: {eggcount} \n");
+                stringchickenstatus = Live(chickenstatus);
+                    Console.WriteLine($"Курица {stringchickenstatus}!   зерен: {corn}   яиц у курицы: {egg}   яиц собрано: {eggcount} \n");
 
                     while (true)
                     {
@@ -41,14 +41,14 @@
                         Console.WriteLine($"Ошибка, нажмите 1 или 2, 3 или 4");
                     }
 
-                    DoStep(step, ref kurica, ref zerno, ref egg);
+                    DoStep(step, ref chickenstatus, ref corn, ref egg);
                     
                     if (end == true) 
                     {
                         Console.WriteLine($"Выход");
                         break;
                     }
-                    if (kurica == false)
+                    if (chickenstatus == false)
                     {
                         Console.WriteLine($"Курицы больше нет\n\n");
                         break;
@@ -57,13 +57,13 @@
 
             }
 
-            static void DoStep(int stepm, ref bool kuricam, ref int zernom, ref int eggm)
+            static void DoStep(int stepm, ref bool chickenstatusm, ref int cornm, ref int eggm)
             {
                 switch (stepm)
                 {
                     case 1:
                     {
-                        action1(ref zernom, ref eggm);
+                        action1(ref cornm, ref eggm);
                         break;
                     }
                     case 2:
@@ -83,10 +83,10 @@
 
                 }
 
-                zernom--;
-                if (zernom <= 0)
+                cornm--;
+                if (cornm <= 0)
                 {
-                kuricam = false; 
+                chickenstatusm = false; 
                     return; 
                 }
             //          eggm++; //если яйцо высиживается каждый ход, пока есть зерна
@@ -101,9 +101,9 @@
                 { return "не жива"; }
             }
 
-            static void action1(ref int zernomm, ref int eggmm)
+            static void action1(ref int cornmm, ref int eggmm)
             {
-                zernomm += 3;
+                cornmm += 3;
                 eggmm++; // если яйцо высиживается только в тот ход, когда кормят
             }
 
